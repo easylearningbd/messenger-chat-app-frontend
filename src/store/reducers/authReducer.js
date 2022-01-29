@@ -1,4 +1,4 @@
-import { REGISTER_FAIL,REGISTER_SUCCESS } from "../types/authType";
+import { REGISTER_FAIL,REGISTER_SUCCESS,SUCCESS_MESSAGE_CLEAR,ERROR_CLEAR } from "../types/authType";
 import deCodeToken from 'jwt-decode';
 
 const authState = {
@@ -56,6 +56,21 @@ export const authReducer = (state = authState, action) => {
           }
 
      } 
+
+
+     if(type === SUCCESS_MESSAGE_CLEAR){
+          return {
+               ...state,
+               successMessage : ''
+          }
+     }
+
+     if(type === ERROR_CLEAR){
+          return {
+               ...state,
+               error : ''
+          }
+     }
 
      return state;
 }

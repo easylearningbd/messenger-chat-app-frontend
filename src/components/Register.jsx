@@ -3,6 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from "react-redux"
 import { userRegister } from '../store/actions/authAction';
 import { useAlert } from 'react-alert';
+import { ERROR_CLEAR, SUCCESS_MESSAGE_CLEAR } from '../store/types/authType';
 
 const Register = () => {
 
@@ -68,9 +69,11 @@ const Register = () => {
           }
           if(successMessage){
                alert.success(successMessage);
+               dispatch({type : SUCCESS_MESSAGE_CLEAR })
           }
           if(error){
                error.map(err=>alert.error(err));
+               dispatch({type : ERROR_CLEAR })
           }
 
      },[successMessage,error])
