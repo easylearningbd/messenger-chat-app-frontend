@@ -1,4 +1,5 @@
-import { REGISTER_FAIL } from "../types/authType";
+import { REGISTER_FAIL,REGISTER_SUCCESS } from "../types/authType";
+import deCodeToken from 'jwt-decode';
 
 const authState = {
      loading : true,
@@ -6,6 +7,16 @@ const authState = {
      error : '',
      successMessage: '',
      myInfo : ''
+}
+
+const tokenDecode = (token) =>{
+     const tokenDecoded = deCodeToken(token);
+     const expTime = new Date(tokenDecoded.exp*1000);
+     if(new Date() > expTime){
+          return null;
+     }
+     return tokenDecoded;
+
 }
 
 export const authReducer = (state = authState, action) => {
@@ -21,8 +32,19 @@ export const authReducer = (state = authState, action) => {
           }
      }
 
+     if(type === REGISTER_SUCCESS){
+          const myInfo = tokenDecode(payload.token);
+          return{
+               ...state,
+               myInfo : myInfo,
+               successMessage : payload.successMessage,
+               error : '',
+               authenticate : true,
+               loading: false
 
+          }
 
+     } 
 
      return state;
 }
