@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { userLogin } from '../store/actions/authAction';
 
 const Login = () => {
+
+
+     const [state, setState] = useState({
+          email: '',
+          password : ''
+     });
+
+     const inputHendle = e => {
+          setState({
+               ...state,
+               [e.target.name] : e.target.value 
+          })
+     }
+
+     const login = (e) => {
+          e.preventDefault();
+          console.log(state);
+     }
+
      return (
           <div className='register'>
           <div className='card'>
@@ -10,17 +30,17 @@ const Login = () => {
                </div>
 
      <div className='card-body'>
-          <form>
+          <form onSubmit={login}>
                 
 
                <div className='form-group'>
                     <label htmlFor='email'>Email</label>
-               <input type="email" className='form-control' placeholder='Email' id='email' /> 
+               <input type="email" onChange={inputHendle} name="email" value={state.email} className='form-control' placeholder='Email' id='email' /> 
                </div>
 
                <div className='form-group'>
                     <label htmlFor='password'>Password</label>
-               <input type="password" className='form-control' placeholder='Password' id='password' /> 
+               <input type="password"  onChange={inputHendle} name="password" value={state.password} className='form-control' placeholder='Password' id='password' /> 
                </div> 
 
 
