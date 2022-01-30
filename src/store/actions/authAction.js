@@ -33,37 +33,36 @@ export const userRegister = (data) => {
      }
 }
 
-
 export const userLogin = (data) => {
-     return async (dispatch) => {
+    return async (dispath) => {
 
-          const config = {
-               headers: {
-                    'Content-Type':'application/josn'
-               } 
-          }
-          try{
-               const response = await axios.post('/api/messenger/user-login',data,config);
-               localStorage.setItem('authToken',response.data.token);
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
 
-               dispatch({
-                    type : USER_LOGIN_SUCCESS,
-                    payload:{
-                         successMessage: response.data.successMessage,
-                         token : response.data.token
-                    }
-               })
-
-          } catch(error){
-                dispatch({
-                    type: USER_LOGIN_FAIL,
-                    payload:{
-                         error : error.response.data.error.errorMessage 
-                    }
-                })
-          }
-
-     }
+        try {
+            const response = await axios.post('/api/messenger/user-login', data, config);
+            localStorage.setItem('authToken', response.data.token);
+            dispath({
+                type: USER_LOGIN_SUCCESS,
+                payload: {
+                    successMessage: response.data.successMessage,
+                    token: response.data.token
+                }
+            })
+        } catch (error) {
+            dispath({
+                type: USER_LOGIN_FAIL,
+                payload: {
+                    error: error.response.data.error.errorMessage
+                }
+            })
+        }
+    }
 }
+
+
 
 
