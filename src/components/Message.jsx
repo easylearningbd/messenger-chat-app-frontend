@@ -150,6 +150,18 @@ const Message = () => {
               </div>
 
 
+              <div className='my-message'>
+                 <div className='image-message'>
+                      <div className='my-text'>
+                <p className='message-text'><img src='/image/20003ariyan.jpg' alt='' /></p>
+                      </div>
+                 </div>
+                 <div className='time'>
+                       2 Jan 2022                      
+                 </div>
+              </div>
+
+
 
               <div className='fd-message'>
                    <div className='image-message-time'>
