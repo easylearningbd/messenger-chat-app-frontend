@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaEllipsisH,FaEdit,FaSistrix } from "react-icons/fa";
+import ActiveFriend from './ActiveFriend';
+import Friends from './Friends';
 
 const Messenger = () => {
   return (
@@ -36,12 +38,45 @@ const Messenger = () => {
                </div>
 
                <div className='active-friends'>
-
+                    <ActiveFriend />
                </div>
-               <div className='friends'>
-                    <div className='hover-friend'>
 
+               <div className='friends'>
+                    <div className='hover-friend active'>
+                    <Friends/>
                     </div>
+
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+                    <div className='hover-friend'>
+                    <Friends/>
+                    </div>
+
 
                </div>
 
