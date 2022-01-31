@@ -33,6 +33,15 @@ const Messenger = () => {
                     <button> <FaSistrix /> </button>
                     <input type="text" placeholder='Search' className='form-control' />
                     </div>
+               </div>
+
+               <div className='active-friends'>
+
+               </div>
+               <div className='friends'>
+                    <div className='hover-friend'>
+
+                    </div>
 
                </div>
 
