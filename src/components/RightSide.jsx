@@ -5,7 +5,7 @@ import Message from './Message';
 import MessageSend from './MessageSend';
 
 const RightSide = () => {
-  return (
+  return ( 
        <div className='col-9'>
             <div className='right-side'>
                  <input type="checkbox" id='dot' />
