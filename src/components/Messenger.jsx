@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect,useState } from 'react';
 import { FaEllipsisH,FaEdit,FaSistrix } from "react-icons/fa";
 import ActiveFriend from './ActiveFriend';
 import Friends from './Friends';
@@ -8,6 +8,10 @@ import { getFriends } from '../store/actions/messengerAction';
  
 
 const Messenger = () => {
+
+
+ const [currentfriend, setCurrentFriend] = useState('');
+ console.log(currentfriend);   
 
  const {friends} = useSelector(state => state.messenger );
  const {myInfo} = useSelector(state => state.auth);
@@ -58,7 +62,7 @@ const Messenger = () => {
 
                <div className='friends'>
      {
-          friends && friends.length>0 ? friends.map((fd) => <div className='hover-friend'> 
+          friends && friends.length>0 ? friends.map((fd) => <div onClick={()=> setCurrentFriend(fd)} className='hover-friend'> 
           <Friends friend={fd} />
           </div> ) : 'No Friend'
      } 
@@ -71,8 +75,12 @@ const Messenger = () => {
                       
                  </div>
 
-
-                 <RightSide />
+     {
+          currentfriend ?  <RightSide 
+          currentfriend={currentfriend}
+          /> : 'Please Select your Friend'
+     }
+                
 
             </div>
 

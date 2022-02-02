@@ -1,18 +1,18 @@
 import React from 'react';
 import { FaCaretSquareDown,FaEdit,FaSistrix } from "react-icons/fa";
 
-const FriendInfo = () => {
+const FriendInfo = ({currentfriend}) => {
   return (
        <div className='friend-info'>
             <input type="checkbox" id='gallery' />
             <div className='image-name'>
                  <div className='image'>
-                 <img src='/image/20003ariyan.jpg' alt='' />
+                 <img src={`./image/${currentfriend.image}`} alt='' />
                  </div>
                  <div className='active-user'>Active</div>
 
      <div className='name'>
-          <h4>Kazi Ariyan </h4>
+          <h4>{currentfriend.userName} </h4>
      </div>
             </div>
 
