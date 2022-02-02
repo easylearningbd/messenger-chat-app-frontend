@@ -11,6 +11,20 @@ const Messenger = () => {
 
 
  const [currentfriend, setCurrentFriend] = useState('');
+ const [newMessage, setNewMessage] = useState('');
+
+ const inputHendle = (e) => {
+     setNewMessage(e.target.value);
+
+ }
+ 
+ const sendMessage = (e) => {
+     e.preventDefault();
+     console.log(newMessage);
+
+ }
+
+
  console.log(currentfriend);   
 
  const {friends} = useSelector(state => state.messenger );
@@ -20,6 +34,12 @@ const Messenger = () => {
      useEffect(() => {
           dispatch(getFriends());
      },[]);
+
+     useEffect(() => {
+         if(friends && friends.length > 0)
+         setCurrentFriend(friends[0])
+       
+     },[friends]);
 
 
 
@@ -78,6 +98,9 @@ const Messenger = () => {
      {
           currentfriend ?  <RightSide 
           currentfriend={currentfriend}
+          inputHendle={inputHendle}
+          newMessage={newMessage}
+          sendMessage={sendMessage}
           /> : 'Please Select your Friend'
      }
                 
