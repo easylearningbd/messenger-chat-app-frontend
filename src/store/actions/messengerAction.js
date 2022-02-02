@@ -15,3 +15,5 @@ export const getFriends = () => async(dispatch) => {
           console.log(error.response.data);
      }
 }
+
+ 
