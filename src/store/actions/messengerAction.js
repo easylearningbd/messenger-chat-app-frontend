@@ -24,3 +24,15 @@ export const messageSend = (data) => async(dispatch) => {
      console.log(error.response.data);
     }
 }
+
+
+export const getMessage = (id) => {
+     return async(dispatch) => {
+          try{
+               const response = await axios.get(`/api/messenger/get-message/${id}`)
+               console.log(response.data)
+          }catch (error){
+               console.log(error.response.data)
+          }
+     }
+}
