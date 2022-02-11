@@ -6,7 +6,7 @@ import MessageSend from './MessageSend';
 
 const RightSide = (props) => {
 
-const {currentfriend,inputHendle,newMessage,sendMessage} = props;
+const {currentfriend,inputHendle,newMessage,sendMessage,message} = props;
  
 
 
@@ -44,7 +44,11 @@ const {currentfriend,inputHendle,newMessage,sendMessage} = props;
     </div>
          </div>
 
-          <Message />
+          <Message
+          message = { message}
+          currentfriend = {currentfriend}
+          />
+
           <MessageSend
           inputHendle = {inputHendle}
           newMessage = {newMessage}
