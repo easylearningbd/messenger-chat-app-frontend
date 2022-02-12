@@ -57,6 +57,9 @@ const Messenger = () => {
       },[ message]);
  
 
+     const emojiSend = (emu) => {
+          setNewMessage(`${newMessage}`+  emu);
+     }
 
 
   return (
@@ -119,6 +122,7 @@ const Messenger = () => {
           sendMessage={sendMessage}
           message={message}
           scrollRef= {scrollRef}
+          emojiSend = {emojiSend}
           /> : 'Please Select your Friend'
      }
                 

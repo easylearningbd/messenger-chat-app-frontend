@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaPlusCircle,FaFileImage,FaGift,FaPaperPlane } from "react-icons/fa";
 
-const MessageSend = ({inputHendle,newMessage,sendMessage}) => {
+const MessageSend = ({inputHendle,newMessage,sendMessage,emojiSend}) => {
  
      const emojis = [
           '😀', '😃', '😄', '😁',
@@ -53,7 +53,7 @@ const MessageSend = ({inputHendle,newMessage,sendMessage}) => {
      <div className='emoji-section'>
           <div className='emoji'>
                {
-                    emojis.map(e => <span>{e}</span>)
+                    emojis.map(e => <span onClick={()=>emojiSend(e)} >{e}</span>)
                }
 
           </div>
