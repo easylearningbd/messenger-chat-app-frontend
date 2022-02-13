@@ -6,7 +6,7 @@ import MessageSend from './MessageSend';
 
 const RightSide = (props) => {
 
-const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiSend,ImageSend} = props;
+const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiSend,ImageSend,activeUser} = props;
  
 
 
@@ -22,9 +22,15 @@ const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiS
                          <div className='image'>
                          <img src={`./image/${currentfriend.image}`} alt='' />
 
+      {
+           activeUser && activeUser.length > 0 && activeUser.some(u => u.userId === currentfriend._id) ? <div className='active-icon'></div> : ''
+      }                   
+                         
+
                          </div>
                          <div className='name'>
                               <h3>{currentfriend.userName} </h3>
+
                          </div>
                     </div>
 
@@ -63,7 +69,7 @@ const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiS
                  </div>  
 
                  <div className='col-4'>
-                   <FriendInfo currentfriend={currentfriend} />
+                   <FriendInfo currentfriend={currentfriend} activeUser = {activeUser} />
                </div>  
 
 

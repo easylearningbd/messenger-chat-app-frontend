@@ -21,6 +21,7 @@ const Messenger = () => {
  const [newMessage, setNewMessage] = useState('');
 
  const [activeUser, setActiveUser] = useState([]);
+ 
 
  useEffect(() => {
     socket.current = io('ws://localhost:8000');
@@ -144,7 +145,7 @@ useEffect(() => {
 
                <div className='active-friends'>
      {
-        activeUser && activeUser.length > 0 ? activeUser.map(u =>  <ActiveFriend user={u} />) : ''  
+        activeUser && activeUser.length > 0 ? activeUser.map(u =>  <ActiveFriend setCurrentFriend = {setCurrentFriend} user={u} />) : ''  
      }
                         
                </div>
@@ -174,6 +175,7 @@ useEffect(() => {
           scrollRef= {scrollRef}
           emojiSend = {emojiSend}
           ImageSend= {ImageSend}
+          activeUser = {activeUser}
           /> : 'Please Select your Friend'
      }
                 
