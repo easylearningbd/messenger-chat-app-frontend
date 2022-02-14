@@ -22,12 +22,18 @@ const Messenger = () => {
 
  const [activeUser, setActiveUser] = useState([]);
  const [socketMessage, setSocketMessage] = useState('');
+ const [typingMessage, setTypingMessage] = useState('');
 
  useEffect(() => {
     socket.current = io('ws://localhost:8000');
     socket.current.on('getMessage',(data) => {
         setSocketMessage(data);
     })
+
+    socket.current.on('typingMessageGet',(data) => {
+     setTypingMessage(data);
+ })
+
 },[]);
 
 
@@ -64,6 +70,12 @@ useEffect(() => {
 
  const inputHendle = (e) => {
      setNewMessage(e.target.value);
+
+     socket.current.emit('typingMessage',{
+          senderId : myInfo.id,
+          reseverId : currentfriend._id,
+          msg : e.target.value
+     })
 
  }
  
