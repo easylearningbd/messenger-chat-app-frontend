@@ -6,7 +6,7 @@ import MessageSend from './MessageSend';
 
 const RightSide = (props) => {
 
-const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiSend,ImageSend,activeUser} = props;
+const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiSend,ImageSend,activeUser,typingMessage} = props;
  
 
 
@@ -54,6 +54,7 @@ const {currentfriend,inputHendle,newMessage,sendMessage,message,scrollRef,emojiS
           message = { message}
           currentfriend = {currentfriend}
           scrollRef = {scrollRef}
+          typingMessage = {typingMessage}
           />
 
           <MessageSend
