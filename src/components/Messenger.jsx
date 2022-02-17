@@ -245,7 +245,7 @@ useEffect(() => {
                <div className='friends'>
      {
           friends && friends.length>0 ? friends.map((fd) => <div onClick={()=> setCurrentFriend(fd.fndInfo)} className={currentfriend._id === fd.fndInfo._id ? 'hover-friend active' : 'hover-friend' }> 
-          <Friends myId = {myInfo}  friend={fd} />
+          <Friends myId = {myInfo.id}  friend={fd} />
           </div> ) : 'No Friend'
      } 
                     
