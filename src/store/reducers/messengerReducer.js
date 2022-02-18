@@ -1,4 +1,4 @@
-import {FRIEND_GET_SUCCESS,MESSAGE_GET_SUCCESS,MESSAGE_SEND_SUCCESS,SOCKET_MESSAGE,UPDATE_FRIEND_MESSAGE,MESSAGE_SEND_SUCCESS_CLEAR} from "../types/messengerType";
+import {FRIEND_GET_SUCCESS,MESSAGE_GET_SUCCESS,MESSAGE_SEND_SUCCESS,SOCKET_MESSAGE,UPDATE_FRIEND_MESSAGE,MESSAGE_SEND_SUCCESS_CLEAR,SEEN_MESSAGE,DELIVARED_MESSAGE} from "../types/messengerType";
 
 const messengerState = {
      friends : [],
@@ -40,6 +40,7 @@ export const messengerReducer = (state=messengerState,action) => {
      if(type === UPDATE_FRIEND_MESSAGE){
           const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
           state.friends[index].msgInfo = payload.msgInfo;
+          state.friends[index].msgInfo.state = payload.status;
           return state;
      }
 
@@ -50,6 +51,23 @@ export const messengerReducer = (state=messengerState,action) => {
                ...state,
                mesageSendSuccess : false               
           }
+     }
+
+
+     if(type === SEEN_MESSAGE){
+          const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
+          state.friends[index].msgInfo.state = 'seen';
+         return {
+              ...state
+         };
+     }
+
+     if(type === DELIVARED_MESSAGE){
+          const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
+          state.friends[index].msgInfo.state = 'delivared';
+         return {
+              ...state
+         };
      }
 
      return state;
