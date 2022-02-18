@@ -30,7 +30,7 @@ const Friends = (props) => {
                  </div>
 
      {
-          myId === msgInfo?.senderId?
+          myId === msgInfo?.senderId ?
           <div className='seen-unseen-icon'>
                {
                     msgInfo.status === 'seen' ?
@@ -39,9 +39,10 @@ const Friends = (props) => {
                
          </div> :
          <div className='seen-unseen-icon'>
-              <div className='seen-icon'>
-
-                   </div>
+              {
+                   msgInfo?.status !== undefined && msgInfo?.status !== 'seen'? <div className='seen-icon'> </div> : ''
+              }
+              
 
               </div>
      }

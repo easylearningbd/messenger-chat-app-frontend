@@ -40,7 +40,7 @@ export const messengerReducer = (state=messengerState,action) => {
      if(type === UPDATE_FRIEND_MESSAGE){
           const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
           state.friends[index].msgInfo = payload.msgInfo;
-          state.friends[index].msgInfo.state = payload.status;
+          state.friends[index].msgInfo.status = payload.status;
           return state;
      }
 
@@ -56,7 +56,7 @@ export const messengerReducer = (state=messengerState,action) => {
 
      if(type === SEEN_MESSAGE){
           const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
-          state.friends[index].msgInfo.state = 'seen';
+          state.friends[index].msgInfo.status = 'seen';
          return {
               ...state
          };
@@ -64,7 +64,7 @@ export const messengerReducer = (state=messengerState,action) => {
 
      if(type === DELIVARED_MESSAGE){
           const index = state.friends.findIndex(f=>f.fndInfo._id === payload.msgInfo.reseverId || f.fndInfo._id === payload.msgInfo.senderId);
-          state.friends[index].msgInfo.state = 'delivared';
+          state.friends[index].msgInfo.status = 'delivared';
          return {
               ...state
          };
