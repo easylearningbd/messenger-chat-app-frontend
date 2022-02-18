@@ -117,6 +117,15 @@ useEffect(() => {
  useEffect(() => {
       if(mesageSendSuccess){
           socket.current.emit('sendMessage', message[message.length -1 ]);
+          dispatch({
+               type: 'UPDATE_FRIEND_MESSAGE',
+               payload : {
+                    msgInfo : message[message.length -1]
+               }
+          })
+          dispatch({
+               type: 'MESSAGE_SEND_SUCCESS_CLEAR'
+          })
       }
 },[mesageSendSuccess]);
 
