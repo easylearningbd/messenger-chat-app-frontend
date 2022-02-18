@@ -64,3 +64,8 @@ export const ImageMessageSend = (data) => async(dispatch)=>{
      }
 
 }
+
+export const seenMessage = (msg) => async(dispatch)=> {
+     console.log(msg);
+}
+

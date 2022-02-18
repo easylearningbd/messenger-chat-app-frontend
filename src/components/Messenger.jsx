@@ -4,7 +4,7 @@ import ActiveFriend from './ActiveFriend';
 import Friends from './Friends';
 import RightSide from './RightSide';
 import {useDispatch ,useSelector } from 'react-redux';
-import { getFriends,messageSend,getMessage,ImageMessageSend } from '../store/actions/messengerAction';
+import { getFriends,messageSend,getMessage,ImageMessageSend,seenMessage } from '../store/actions/messengerAction';
 
 import toast,{Toaster} from 'react-hot-toast';
 import {io} from 'socket.io-client';
@@ -53,6 +53,13 @@ useEffect(() => {
                         message: socketMessage
                    }
               })
+              dispatch(seenMessage(socketMessage))
+              dispatch({
+               type: 'UPDATE_FRIEND_MESSAGE',
+               payload : {
+                    msgInfo : socketMessage
+               }
+          })
          }
     }
     setSocketMessage('')
