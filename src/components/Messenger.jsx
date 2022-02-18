@@ -4,7 +4,7 @@ import ActiveFriend from './ActiveFriend';
 import Friends from './Friends';
 import RightSide from './RightSide';
 import {useDispatch ,useSelector } from 'react-redux';
-import { getFriends,messageSend,getMessage,ImageMessageSend,seenMessage } from '../store/actions/messengerAction';
+import { getFriends,messageSend,getMessage,ImageMessageSend,seenMessage,updateMessage } from '../store/actions/messengerAction';
 
 import toast,{Toaster} from 'react-hot-toast';
 import {io} from 'socket.io-client';
@@ -82,6 +82,13 @@ useEffect(() => {
       if(socketMessage && socketMessage.senderId !== currentfriend._id && socketMessage.reseverId === myInfo.id){
            notificationSPlay();
            toast.success(`${socketMessage.senderName} Send a New Message`)
+           dispatch(updateMessage(socketMessage))
+           dispatch({
+            type: 'UPDATE_FRIEND_MESSAGE',
+            payload : {
+                 msgInfo : socketMessage
+            }
+       })
 
       }
  },[socketMessage]);
