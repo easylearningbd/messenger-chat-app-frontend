@@ -184,7 +184,15 @@ useEffect(() => {
 
 
      useEffect(() => {
-          dispatch(getMessage(currentfriend._id))
+          dispatch(getMessage(currentfriend._id));
+          if(friends.length > 0){
+               dispatch({
+                    type: 'UPDATE',
+                    payload : {
+                         id : currentfriend._id
+                    }
+               })
+          }
       },[ currentfriend?._id]);
  
       useEffect(() => {
