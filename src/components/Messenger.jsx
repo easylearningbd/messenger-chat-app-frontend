@@ -4,7 +4,7 @@ import ActiveFriend from './ActiveFriend';
 import Friends from './Friends';
 import RightSide from './RightSide';
 import {useDispatch ,useSelector } from 'react-redux';
-import { getFriends,messageSend,getMessage,ImageMessageSend,seenMessage,updateMessage } from '../store/actions/messengerAction';
+import { getFriends,messageSend,getMessage,ImageMessageSend,seenMessage,updateMessage,getTheme,themeSet } from '../store/actions/messengerAction';
 import {userLogout } from '../store/actions/authAction';
 
 import toast,{Toaster} from 'react-hot-toast';
@@ -271,8 +271,14 @@ useEffect(() => {
           socket.current.emit('logout', myInfo.id);
      }
 
+     useEffect(() => {
+         dispatch(getTheme());
+      },[ ]);
+ 
+
+
   return (
-       <div className='messenger'>
+       <div className='messenger '>
             <Toaster
             position={'top-right'}
             reverseOrder = {false}
@@ -311,12 +317,12 @@ useEffect(() => {
                  <h3>Dark Mode </h3>
             <div className='on'>
                  <label htmlFor='dark'>ON</label>
-                 <input type="radio" value="dark" name="theme" id="dark" />
+                 <input onChange={(e) => dispatch(themeSet(e.target.value)) } type="radio" value="dark" name="theme" id="dark" />
                  </div>
 
                  <div className='of'>
                  <label htmlFor='white'>OFF</label>
-                 <input type="radio" value="white" name="theme" id="white" />
+                 <input onChange={(e) => dispatch(themeSet(e.target.value)) } type="radio" value="white" name="theme" id="white" />
                  </div>
 
                  <div onClick={logout} className='logout'>

@@ -86,3 +86,12 @@ export const updateMessage = (msg) => async(dispatch)=> {
      }
 }
 
+
+export const getTheme = () => async(dispatch) => {
+
+}
+
+
+export const themeSet = () => async(dispatch) => {
+     
+}

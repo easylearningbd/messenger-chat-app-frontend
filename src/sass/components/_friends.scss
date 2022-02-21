@@ -1,14 +1,14 @@
 .friends{
      display: flex;
      flex-direction: column;
-     background-color: #ffffff;
+     background-color: var(--border-color);
      height: 100%;     
      overflow-y: auto;
      &::-webkit-scrollbar{
          display: none;
      }
      .hover-friend.active{
-         background-color: #dfdfdf;
+         background-color: var(--search-bg);
      }
      .hover-friend{
          cursor: pointer;
