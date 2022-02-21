@@ -63,8 +63,19 @@ export const userLogin = (data) => {
     }
 }
 
-export const userLogout = () => async(dispath) => {
-    console.log('this is logout');
+export const userLogout = () => async(dispatch) => {
+     try{
+         const response = await axios.post('/api/messenger/user-logout');
+         if(response.data.success){
+             localStorage.removeItem('authToken');
+             dispatch({
+                 type : 'LOGOUT_SUCCESS'
+             })
+         }
+
+     }catch (error) {
+
+     }
 }
 
 
