@@ -22,7 +22,7 @@ const Messenger = () => {
  const socket = useRef();
 
 
- const {friends,message,mesageSendSuccess,message_get_success} = useSelector(state => state.messenger );
+ const {friends,message,mesageSendSuccess,message_get_success,themeMood} = useSelector(state => state.messenger );
  const {myInfo} = useSelector(state => state.auth);
 
  const [currentfriend, setCurrentFriend] = useState('');
@@ -278,7 +278,7 @@ useEffect(() => {
 
 
   return (
-       <div className='messenger '>
+       <div className={themeMood === 'dark' ? 'messenger theme' : 'messenger' }>
             <Toaster
             position={'top-right'}
             reverseOrder = {false}
