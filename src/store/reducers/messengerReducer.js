@@ -5,7 +5,8 @@ const messengerState = {
      message : [],
      mesageSendSuccess : false,
      message_get_success : false,
-     themeMood : ''
+     themeMood : '',
+     new_user_add : ''
 }
 
 export const messengerReducer = (state=messengerState,action) => {
@@ -120,6 +121,20 @@ export const messengerReducer = (state=messengerState,action) => {
                mesageSendSuccess : false,
                message_get_success : false,
               
+          }
+     }
+
+     if(type === 'NEW_USER_ADD'){
+          return{
+               ...state,
+               new_user_add : payload.new_user_add
+          }
+     }
+
+     if(type === 'NEW_USER_ADD_CLEAR'){
+          return{
+               ...state,
+               new_user_add : ''
           }
      }
  
