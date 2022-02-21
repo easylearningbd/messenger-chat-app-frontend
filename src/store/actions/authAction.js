@@ -63,6 +63,10 @@ export const userLogin = (data) => {
     }
 }
 
+export const userLogout = () => async(dispath) => {
+    console.log('this is logout');
+}
+
 
 
 
