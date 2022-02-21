@@ -111,6 +111,17 @@ export const messengerReducer = (state=messengerState,action) => {
                ...state
           }
      }
+
+     if(type === 'LOGOUT_SUCCESS'){
+          return {
+               ...state,
+               friends : [],
+               message : [],
+               mesageSendSuccess : false,
+               message_get_success : false,
+              
+          }
+     }
  
 
 
